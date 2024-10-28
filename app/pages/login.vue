@@ -19,4 +19,15 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: false,
+  middleware: () => {
+    const { loggedIn } = useUserSession();
+
+    if (loggedIn.value) {
+      return navigateTo("/");
+    }
+  },
+});
+</script>

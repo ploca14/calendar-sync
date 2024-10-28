@@ -14,8 +14,10 @@ export default defineOAuthGoogleEventHandler({
   },
 
   async onSuccess(event, { user, tokens }) {
-    // Store the tokens with TTL matching the token expiration
+    // Store the tokens
     await authStorage().setItem(`${user.email}:tokens`, {
+      access_token: tokens.access_token,
+      expires_at: new Date(Date.now() + tokens.expires_in * 1000).getTime(),
       refresh_token: tokens.refresh_token,
     });
 

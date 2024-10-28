@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
     "@nuxt/icon",
+    "@vueuse/nuxt",
   ],
 
   devtools: { enabled: true },
