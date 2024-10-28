@@ -16,12 +16,6 @@ export default defineNuxtConfig({
 
   hub: {},
 
-  icon: {
-    serverBundle: {
-      collections: ["lucide", "cib", "logos"],
-    },
-  },
-
   shadcn: {
     prefix: "",
     componentDir: "./app/components/ui",
