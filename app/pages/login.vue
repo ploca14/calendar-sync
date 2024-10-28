@@ -8,17 +8,15 @@
         <CardDescription>Sign in to your account</CardDescription>
       </CardHeader>
       <CardContent>
-        <Button class="w-full" @click="handleGoogleSignIn">
-          <Icon name="cib:google" class="mr-2 h-4 w-4" />
-          Sign in with Google
+        <Button class="w-full" as-child>
+          <NuxtLink to="/auth/google" external>
+            <Icon name="cib:google" class="mr-2 h-4 w-4" />
+            Sign in with Google
+          </NuxtLink>
         </Button>
       </CardContent>
     </Card>
   </div>
 </template>
 
-<script setup lang="ts">
-const handleGoogleSignIn = async () => {
-  console.log("Google sign in");
-};
-</script>
+<script setup lang="ts"></script>

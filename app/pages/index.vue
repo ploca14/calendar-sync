@@ -1,9 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { loggedIn, user, clear } = useUserSession();
+</script>
 
 <template>
   <div>
-    <h1>Hello World</h1>
-    <Button>Click me</Button>
+    {{ loggedIn }}
+    {{ user }}
+    <Button @click="clear">Log out</Button>
   </div>
 </template>
 
