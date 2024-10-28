@@ -1,11 +1,10 @@
 <script setup lang="ts">
 const { user } = useUserSession();
 
-const connectedCalendars = ref([
-  { label: "Calendar 1", id: "1" },
-  { label: "Calendar 2", id: "2" },
-  { label: "Calendar 3", id: "3" },
-]);
+const { data: connectedCalendars } = useQuery({
+  queryKey: ["calendars", "connected"],
+  queryFn: () => $fetch("/api/calendars"),
+});
 
 const syncedCalendars = ref([
   { label: "Calendar 4", url: "https://example.com/calendar4.ics" },
@@ -35,10 +34,10 @@ const syncedCalendars = ref([
           </SidebarGroupLabel>
           <CollapsibleContent>
             <SidebarGroupContent>
-              <SidebarMenu>
+              <SidebarMenu v-if="connectedCalendars">
                 <SidebarMenuItem
-                  v-for="calendar in connectedCalendars"
-                  :key="calendar.id"
+                  v-for="(calendar, index) in connectedCalendars"
+                  :key="calendar?.id ?? index"
                 >
                   <SidebarMenuButton>
                     <div
@@ -49,7 +48,7 @@ const syncedCalendars = ref([
                         class="hidden size-3 group-data-[active=true]/calendar-item:block"
                       />
                     </div>
-                    {{ calendar.label }}
+                    {{ calendar.summary ?? `Calendar ${index + 1}` }}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>

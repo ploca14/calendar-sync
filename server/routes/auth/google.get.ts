@@ -16,9 +16,9 @@ export default defineOAuthGoogleEventHandler({
   async onSuccess(event, { user, tokens }) {
     // Store the tokens
     await authStorage().setItem(`${user.email}:tokens`, {
-      access_token: tokens.access_token,
-      expires_at: new Date(Date.now() + tokens.expires_in * 1000).getTime(),
-      refresh_token: tokens.refresh_token,
+      accessToken: tokens.access_token,
+      expiresAt: new Date(Date.now() + tokens.expires_in * 1000).getTime(),
+      refreshToken: tokens.refresh_token,
     });
 
     await setUserSession(event, {
@@ -31,6 +31,8 @@ export default defineOAuthGoogleEventHandler({
       },
       secure: {
         accessToken: tokens.access_token,
+        expiresAt: new Date(Date.now() + tokens.expires_in * 1000).getTime(),
+        refreshToken: tokens.refresh_token,
       },
     });
 

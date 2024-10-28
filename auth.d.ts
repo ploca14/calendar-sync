@@ -14,6 +14,8 @@ declare module "#auth-utils" {
 
   interface SecureSessionData {
     accessToken: string;
+    expiresAt: number;
+    refreshToken: string;
   }
 }
 

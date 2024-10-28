@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxt/icon",
     "@vueuse/nuxt",
+    "@hebilicious/vue-query-nuxt",
   ],
 
   devtools: { enabled: true },

@@ -10,6 +10,8 @@ defineProps<{
 }>();
 
 const { isMobile } = useSidebar();
+
+const { clear } = useUserSession();
 </script>
 
 <template>
@@ -60,7 +62,7 @@ const { isMobile } = useSidebar();
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem>
+          <DropdownMenuItem @click="clear">
             <Icon name="lucide:log-out" />
             Log out
           </DropdownMenuItem>
